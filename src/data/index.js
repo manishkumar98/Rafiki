@@ -6,6 +6,13 @@ export const NIADELS = [
   { id: 'nd3', name: 'Deccan South', theatre: 'Deccan', city: 'Hyderabad', eaeCount: 2, memberCount: 187 },
 ];
 
+export const THEATRES = [
+  { id: 'th1', name: 'Rajputana', abbr: 'RN',   city: 'Jaipur',   niadels: 3, memberCount: 312, eaeCount: 3 },
+  { id: 'th2', name: 'Wellington', abbr: 'WLG',  city: 'Pune',     niadels: 4, memberCount: 428, eaeCount: 4 },
+  { id: 'th3', name: 'Deccan',     abbr: 'DN',   city: 'Hyderabad',niadels: 2, memberCount: 187, eaeCount: 2 },
+  { id: 'th4', name: 'Coromandel', abbr: 'CORO', city: 'Chennai',  niadels: 2, memberCount: 164, eaeCount: 2 },
+];
+
 export const MEMBERS = [
   {
     id: 'm1',

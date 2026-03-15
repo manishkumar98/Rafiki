@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { AGENTS, KPI_DATA, MEMBERS, SIGNAL_LOG, NIADELS, EAE_ALERTS } from '../data'
+import { AGENTS, KPI_DATA, MEMBERS, SIGNAL_LOG, NIADELS, THEATRES, EAE_ALERTS } from '../data'
 
 const PILLAR_COLORS = {
   Studio: { bg: 'bg-nia-surf', text: 'text-nia-blue', border: 'border-nia-blue/20', dot: 'bg-nia-blue' },
@@ -75,7 +75,7 @@ export default function OpsDashboard() {
             <div className="text-white font-bold text-base">Rafiki — Ops Dashboard</div>
             <div className="text-white/40 text-xs flex items-center gap-2">
               <span className="w-1.5 h-1.5 bg-flow-green rounded-full inline-block"></span>
-              Live · All Niadels · {new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' })}
+              Live · All Theatres · {new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' })}
             </div>
           </div>
           {highAlerts > 0 && (
@@ -152,19 +152,19 @@ export default function OpsDashboard() {
               </div>
             </div>
 
-            {/* Niadel cards */}
+            {/* Theatre cards */}
             <div>
-              <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Niadels</div>
+              <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Theatres</div>
               <div className="space-y-2">
-                {NIADELS.map(n => (
-                  <div key={n.id} className="bg-white rounded-2xl border border-gray-100 px-4 py-3 flex items-center justify-between shadow-sm">
+                {THEATRES.map(th => (
+                  <div key={th.id} className="bg-white rounded-2xl border border-gray-100 px-4 py-3 flex items-center justify-between shadow-sm">
                     <div>
-                      <div className="font-semibold text-nia-navy text-sm">{n.name}</div>
-                      <div className="text-gray-400 text-xs">{n.city} · {n.theatre}</div>
+                      <div className="font-semibold text-nia-navy text-sm">{th.name}</div>
+                      <div className="text-gray-400 text-xs">{th.city} · {th.niadels} Niadels · {th.eaeCount} EAEs</div>
                     </div>
                     <div className="text-right">
-                      <div className="text-nia-blue font-bold">{n.memberCount}</div>
-                      <div className="text-gray-400 text-xs">{n.eaeCount} EAEs</div>
+                      <div className="text-nia-blue font-bold">{th.memberCount}</div>
+                      <div className="text-gray-400 text-xs">Nians</div>
                     </div>
                   </div>
                 ))}
@@ -242,7 +242,7 @@ export default function OpsDashboard() {
         {/* ── MEMBERS ──────────────────────────────────── */}
         {activeTab === 'members' && (
           <>
-            <div className="text-xs text-gray-500">{KPI_DATA.totalMembers} members across {NIADELS.length} Niadels</div>
+            <div className="text-xs text-gray-500">{KPI_DATA.totalMembers} Nians across {THEATRES.length} Theatres</div>
             {MEMBERS.map((m, i) => {
               const savingsPct = Math.round((m.savingsGoal.saved / m.savingsGoal.amount) * 100)
               const riskColor = m.risk === 'high' ? 'border-red-200 bg-red-50' : m.risk === 'medium' ? 'border-amber-100 bg-amber-50' : 'border-gray-100 bg-white'
@@ -257,7 +257,7 @@ export default function OpsDashboard() {
                         <StatusBadge status={m.status} />
                         {m.risk === 'high' && <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-red-500 text-white">HIGH RISK</span>}
                       </div>
-                      <div className="text-gray-500 text-xs mt-0.5">{m.homeState} · {m.language} · Day {m.tenure} · Nest {m.nestId}</div>
+                      <div className="text-gray-500 text-xs mt-0.5">{m.homeState} · {m.language} · Day {m.tenure} · Room {m.nestId}</div>
                       {m.employer && <div className="text-gray-400 text-xs">{m.skills} @ {m.employer}</div>}
 
                       {/* Savings bar */}
