@@ -87,7 +87,7 @@ export default function OpsDashboard() {
         <div className="grid grid-cols-4 gap-2">
           <div className="bg-white/5 rounded-xl p-2 text-center">
             <div className="text-white font-bold text-lg">{kd.totalMembers.toLocaleString()}</div>
-            <div className="text-white/40 text-[10px]">Members</div>
+            <div className="text-white/40 text-[10px]">Nians</div>
           </div>
           <div className="bg-white/5 rounded-xl p-2 text-center">
             <div className="text-flow-green font-bold text-lg">{kd.agentFiresToday}</div>
@@ -160,10 +160,10 @@ export default function OpsDashboard() {
                   <div key={th.id} className="bg-white rounded-2xl border border-gray-100 px-4 py-3 flex items-center justify-between shadow-sm">
                     <div>
                       <div className="font-semibold text-nia-navy text-sm">{th.name}</div>
-                      <div className="text-gray-400 text-xs">{th.city} · {th.niadels} Niadels · {th.eaeCount} EAEs</div>
+                      <div className="text-gray-400 text-xs">{th.studios} Studios · {th.eaeCount} EAEs</div>
                     </div>
                     <div className="text-right">
-                      <div className="text-nia-blue font-bold">{th.memberCount}</div>
+                      <div className="text-nia-blue font-bold">{th.memberCount.toLocaleString()}</div>
                       <div className="text-gray-400 text-xs">Nians</div>
                     </div>
                   </div>

@@ -7,10 +7,10 @@ export const NIADELS = [
 ];
 
 export const THEATRES = [
-  { id: 'th1', name: 'Rajputana', abbr: 'RN',   city: 'Jaipur',   niadels: 3, memberCount: 312, eaeCount: 3 },
-  { id: 'th2', name: 'Wellington', abbr: 'WLG',  city: 'Pune',     niadels: 4, memberCount: 428, eaeCount: 4 },
-  { id: 'th3', name: 'Deccan',     abbr: 'DN',   city: 'Hyderabad',niadels: 2, memberCount: 187, eaeCount: 2 },
-  { id: 'th4', name: 'Coromandel', abbr: 'CORO', city: 'Chennai',  niadels: 2, memberCount: 164, eaeCount: 2 },
+  { id: 'th1', name: 'Rajputana',  abbr: 'RN',   studios: 80, memberCount: 2160, eaeCount: 3 },
+  { id: 'th2', name: 'Wellington', abbr: 'WLG',  studios: 22, memberCount: 1330, eaeCount: 4 },
+  { id: 'th3', name: 'Deccan',     abbr: 'DN',   studios: 15, memberCount: 1581, eaeCount: 2 },
+  { id: 'th4', name: 'Coromandel', abbr: 'CORO', studios: 5,  memberCount:  409, eaeCount: 2 },
 ];
 
 export const MEMBERS = [
@@ -481,7 +481,7 @@ export const KPI_DATA = {
   eaeTarget: 90,
   uptime: 99.7,
   uptimeTarget: 99.5,
-  totalMembers: 927,
+  totalMembers: 5480,
   activeAlerts: 5,
   messagesLast24h: 1284,
   agentFiresToday: 20,
