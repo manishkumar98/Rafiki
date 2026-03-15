@@ -122,7 +122,7 @@ export const EAE_ALERTS = [
     nestId: 'B-112',
     niadel: 'Rajputana North',
     flag: 'No Studio activity for 8 days. Month 2-3 cliff. Loneliness flag active.',
-    script: 'Visit Priya at Nest B-112. Ask how she is settling. Mention her savings progress (₹18,000 of ₹80,000 for home construction). Invite her to this Friday\'s Odia community dinner.',
+    script: 'Visit Priya at Room B-112. Ask how she is settling. Mention her savings progress (₹18,000 of ₹80,000 for home construction). Invite her to this Friday\'s Odia community dinner.',
     sla: '24 hours',
     created: '6 hours ago',
     status: 'pending',
@@ -154,7 +154,7 @@ export const EAE_ALERTS = [
     nestId: 'A-204',
     niadel: 'Rajputana North',
     flag: 'New member arrived today. Physical greeting due within 2 hours.',
-    script: 'Welcome Arjun at Nest A-204. Show him the Studio essentials counter, canteen, and Wi-Fi password. Introduce him to his Nest neighbours. Add him to the Bihar/Hindi WhatsApp sub-group.',
+    script: 'Welcome Arjun at Room A-204. Show him the Studio essentials counter, canteen, and Wi-Fi password. Introduce him to his room neighbours. Add him to the Bihar/Hindi WhatsApp sub-group.',
     sla: '2 hours',
     created: '45 mins ago',
     status: 'in-progress',
@@ -186,7 +186,7 @@ export const EAE_ALERTS = [
     nestId: 'B-112',
     niadel: 'Rajputana North',
     flag: 'No sub-group message in 9 days. No inbound DM in 8 days. Day 47 cliff.',
-    script: 'In-person visit required. Sit with Priya for 10 minutes. Ask about her home, her family. Do not make it clinical. Mention the Odia women\'s circle that meets Wednesday evenings.',
+    script: 'In-person visit required. Go to Room B-112. Sit with Priya for 10 minutes. Ask about her home, her family. Do not make it clinical. Mention the Odia women\'s circle that meets Wednesday evenings.',
     sla: '24 hours',
     created: '3 hours ago',
     status: 'pending',
@@ -198,7 +198,7 @@ export const CHAT_FLOWS = {
   m1: [ // Arjun - new member Day 1
     {
       id: 1, from: 'rafiki', time: '09:04 AM',
-      text: 'नमस्ते Arjun! Nia में आपका स्वागत है। 🙏\n\nआपका Nest A-204, Rajputana North में तैयार है।\n\nआपके EAE Santosh जल्द ही आपसे मिलेंगे।',
+      text: 'नमस्ते Arjun! Nia में आपका स्वागत है। 🙏\n\nआपका Room A-204, Rajputana North में तैयार है।\n\nआपके EAE Santosh जल्द ही आपसे मिलेंगे।',
       agent: 'Nest Activation Agent',
     },
     {
@@ -210,7 +210,7 @@ export const CHAT_FLOWS = {
       choices: [
         { label: 'धन्यवाद भाई! Nest में आ गया हूं 😊', value: 'Dhanyavaad bhai! Nest mein aa gaya hoon.', primary: true },
         { label: 'मेरा कमरा नंबर क्या है?', value: 'Mera room number kya hai?',
-          response: 'Arjun, aapka room A-204 hai — Building A, 2nd floor. Lift ke paas seedha left.\n\nAapke saath usi floor par 3 aur Bihar ke saathi hain. Unse milna mat bhoolna! 😊\n\nKoi dikkat ho toh Santosh: +91 99001 12233',
+          response: 'Arjun, aapka Room A-204 hai — Building A, 2nd floor. Lift ke paas seedha left.\n\nAapke saath usi floor par 3 aur Bihar ke saathi hain. Unse milna mat bhoolna! 😊\n\nKoi dikkat ho toh Santosh: +91 99001 12233',
           responseAgent: 'Nest Activation Agent' },
         { label: 'WiFi password बताओ', value: 'WiFi password batao',
           response: 'WiFi naam: Nia_RN_2024\nPassword: NiaRajputana@24\n\nSabhi floors par kaam karta hai. Agar connect na ho — Santosh ko bolo: +91 99001 12233 📶',
@@ -292,7 +292,7 @@ export const CHAT_FLOWS = {
           response: 'That is so good to hear, Priya. 💛\n\nIf anything feels heavy again — health, home, or just missing family — message here anytime.\n\nThe Odia community (12 members) meets every Wednesday 7pm. Santosh will introduce you. You are not alone here. 🙏',
           responseAgent: 'Loneliness Agent' },
         { label: 'HELP — EAE ସାଥେ କଥା ହେବା', value: 'HELP',
-          response: 'Connecting you to Santosh now. 🤝\n\nSantosh Meena — EAE Rajputana North\n📞 +91 99001 12233\n\nHe will visit Nest B-112 within 2 hours.\nYou are not alone, Priya. We are here. 🙏',
+          response: 'Connecting you to Santosh now. 🤝\n\nSantosh Meena — EAE Rajputana North\n📞 +91 99001 12233\n\nHe will visit Room B-112 within 2 hours.\nYou are not alone, Priya. We are here. 🙏',
           responseAgent: 'Rafiki Orchestrator' },
       ],
     },
@@ -396,8 +396,8 @@ export const CHAT_FLOWS = {
   m5: [ // Irfan - placement pending
     {
       id: 1, from: 'rafiki', time: 'Today, 09:00 AM',
-      text: 'Assalamu Alaikum Irfan! Nia তে স্বাগতম! 🙏\n\n(Welcome to Nia!)\n\nYour Nest D-205 at Deccan South is ready. EAE Vikram will visit you today.',
-      translatedText: 'আসসালামু আলাইকুম Irfan! Nia-তে স্বাগতম! 🙏\n\nDeccan South-এ তোমার Nest D-205 প্রস্তুত। EAE Vikram আজকে তোমার সাথে দেখা করবে।',
+      text: 'Assalamu Alaikum Irfan! Nia তে স্বাগতম! 🙏\n\n(Welcome to Nia!)\n\nYour Room D-205 at Deccan South is ready. EAE Vikram will visit you today.',
+      translatedText: 'আসসালামু আলাইকুম Irfan! Nia-তে স্বাগতম! 🙏\n\nDeccan South-এ তোমার Room D-205 প্রস্তুত। EAE Vikram আজকে তোমার সাথে দেখা করবে।',
       agent: 'Nest Activation Agent',
     },
     {
@@ -427,17 +427,17 @@ export const CHAT_FLOWS = {
       choices: [
         { label: 'Okay, Vikram ভাইয়ের অপেক্ষা করছি 🙏', value: 'Okay Vikram bhai ka wait karta hoon.', primary: true },
         { label: 'কতক্ষণ লাগবে?', value: 'Kitni der mein aayenge?',
-          response: 'Vikram এখন Nest D-205 এর দিকে আসছে — ১৫ মিনিটের মধ্যে পৌঁছাবে। 🚶\n\nSBI branch: ৩০–৪৫ মিনিট (bank account)\nPF form: আরো ১৫ মিনিট\n\nমোট: প্রায় ২ ঘণ্টা। আজ রাতের মধ্যেই Aurobindo placement confirm হবে। 💪',
+          response: 'Vikram এখন Room D-205 এর দিকে আসছে — ১৫ মিনিটের মধ্যে পৌঁছাবে। 🚶\n\nSBI branch: ৩০–৪৫ মিনিট (bank account)\nPF form: আরো ১৫ মিনিট\n\nমোট: প্রায় ২ ঘণ্টা। আজ রাতের মধ্যেই Aurobindo placement confirm হবে। 💪',
           responseAgent: 'Document Readiness Agent' },
         { label: 'HELP — আমার সাহায্য দরকার', value: 'HELP',
-          response: 'Irfan, কোনো চিন্তা নেই! 🙏\n\nVikram Yadav — EAE Deccan South:\n📞 +91 77003 34455\n\nতিনি Nest D-205 আসছেন। জরুরি হলে সরাসরি call করো।\n\nতোমার placement সম্পূর্ণ নিরাপদ। 🤝',
+          response: 'Irfan, কোনো চিন্তা নেই! 🙏\n\nVikram Yadav — EAE Deccan South:\n📞 +91 77003 34455\n\nতিনি Room D-205 আসছেন। জরুরি হলে সরাসরি call করো।\n\nতোমার placement সম্পূর্ণ নিরাপদ। 🤝',
           responseAgent: 'Rafiki Orchestrator' },
       ],
     },
     {
       id: 6, from: 'rafiki', time: 'Today, 09:36 AM',
-      text: 'Vikram is on his way to Nest D-205. He\'ll take you to SBI branch (50m away) and back within 2 hours.\n\nOnce documents are done, your Aurobindo start date will be confirmed within 24 hours. You are very close, Irfan. 💪\n\nYour savings goal for Amma\'s treatment: ₹60,000. This job gets you there in 4 months.',
-      translatedText: 'Vikram Nest D-205-এর দিকে আসছে। সে তোমাকে SBI branch (৫০ মিটার দূরে) নিয়ে যাবে এবং ২ ঘণ্টার মধ্যে ফিরে আসবে।\n\nকাগজ হলেই Aurobindo শুরুর তারিখ ২৪ ঘণ্টার মধ্যে নিশ্চিত হবে। তুমি প্রায় পৌঁছে গেছ, Irfan। 💪\n\nআম্মার চিকিৎসার জন্য সঞ্চয়ের লক্ষ্য: ₹60,000। এই চাকরিতে তুমি ৪ মাসে পৌঁছাবে।',
+      text: 'Vikram is on his way to Room D-205. He\'ll take you to SBI branch (50m away) and back within 2 hours.\n\nOnce documents are done, your Aurobindo start date will be confirmed within 24 hours. You are very close, Irfan. 💪\n\nYour savings goal for Amma\'s treatment: ₹60,000. This job gets you there in 4 months.',
+      translatedText: 'Vikram Room D-205-এর দিকে আসছে। সে তোমাকে SBI branch (৫০ মিটার দূরে) নিয়ে যাবে এবং ২ ঘণ্টার মধ্যে ফিরে আসবে।\n\nকাগজ হলেই Aurobindo শুরুর তারিখ ২৪ ঘণ্টার মধ্যে নিশ্চিত হবে। তুমি প্রায় পৌঁছে গেছ, Irfan। 💪\n\nআম্মার চিকিৎসার জন্য সঞ্চয়ের লক্ষ্য: ₹60,000। এই চাকরিতে তুমি ৪ মাসে পৌঁছাবে।',
       agent: 'Document Readiness Agent',
     },
   ],

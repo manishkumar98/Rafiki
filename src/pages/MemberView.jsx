@@ -220,7 +220,7 @@ export default function MemberView() {
             <div className="text-3xl">{member.avatar}</div>
             <div>
               <div className="text-white font-bold">{member.name}</div>
-              <div className="text-white/60 text-xs">{member.homeState} · {member.language} · Nest {member.nestId}</div>
+              <div className="text-white/60 text-xs">{member.homeState} · {member.language} · Room {member.nestId}</div>
             </div>
           </div>
           <div className="grid grid-cols-2 gap-2 text-xs">
