@@ -39,7 +39,7 @@ export default function RoleSelect() {
                   <StatusBadge status={m.status} />
                 </div>
                 <div className="text-white/50 text-xs mt-0.5">
-                  {m.homeState} · {m.language} · Day {m.tenure} · Nest {m.nestId}
+                  {m.homeState} · {m.language} · Day {m.tenure} · Room {m.nestId}
                 </div>
               </div>
               <div className="text-white/30 group-hover:text-white/60 transition-colors">→</div>

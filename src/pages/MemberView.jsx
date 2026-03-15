@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { MEMBERS, CHAT_FLOWS } from '../data'
+import rafikiAvatar from '../assets/rafiki.jpg'
 
 const PILLAR_COLORS = {
   'Nest Activation Agent': 'text-nia-blue bg-nia-surf',
@@ -281,7 +282,14 @@ export default function MemberView() {
         {chatMessages.map((msg, idx) => (
           <div key={`${msg.id}-${idx}`} className={`flex ${msg.from === 'member' ? 'justify-end' : 'justify-start'} fade-in`}>
             {msg.from === 'rafiki' ? (
-              <div className="max-w-[85%]">
+              <div className="max-w-[85%] flex items-end gap-2">
+                {/* Rafiki avatar */}
+                <img
+                  src={rafikiAvatar}
+                  alt="Rafiki"
+                  className="w-8 h-8 rounded-full object-cover object-top flex-shrink-0 shadow-sm border-2 border-white"
+                />
+                <div className="flex-1">
                 {msg.agent && (
                   <div className={`text-[10px] font-semibold px-2 py-0.5 rounded-full mb-1 w-fit ${PILLAR_COLORS[msg.agent] || 'text-nia-blue bg-nia-surf'}`}>
                     {msg.agent}
@@ -302,6 +310,7 @@ export default function MemberView() {
                     </button>
                   )}
                   <div className="text-[10px] text-gray-400 mt-1 text-right">{msg.time}</div>
+                </div>
                 </div>
               </div>
             ) : (
