@@ -208,7 +208,7 @@ export const CHAT_FLOWS = {
     },
     { id: 3, from: 'member', time: '09:12 AM', text: 'Dhanyavaad bhai! Nest mein aa gaya hoon.',
       choices: [
-        { label: 'धन्यवाद भाई! Nest में आ गया हूं 😊', value: 'Dhanyavaad bhai! Nest mein aa gaya hoon.', primary: true },
+        { label: 'धन्यवाद भाई! Room में आ गया हूं 😊', value: 'Dhanyavaad bhai! Room mein aa gaya hoon.', primary: true },
         { label: 'मेरा कमरा नंबर क्या है?', value: 'Mera room number kya hai?',
           response: 'Arjun, aapka Room A-204 hai — Building A, 2nd floor. Lift ke paas seedha left.\n\nAapke saath usi floor par 3 aur Bihar ke saathi hain. Unse milna mat bhoolna! 😊\n\nKoi dikkat ho toh Santosh: +91 99001 12233',
           responseAgent: 'Nest Activation Agent' },
