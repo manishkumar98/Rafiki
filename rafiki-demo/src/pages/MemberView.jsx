@@ -117,30 +117,35 @@ export default function MemberView() {
     const idx = revealIdxRef.current
     const msgs = CHAT_FLOWS[id] || []
     const msg = msgs[idx]
-    const sentMsg = { id: msg?.id || Date.now(), from: 'member', time: 'Just now', text: choice.value }
+    const sentMsg = { id: Date.now(), from: 'member', time: 'Just now', text: choice.value }
     setChatMessages(prev => [...prev, sentMsg])
-    revealIdxRef.current++
     setAwaitingInput(false)
     setPendingChoices([])
 
     if (choice.response) {
-      // Alternative choice — show contextual Rafiki answer, then stop scripted flow
+      // Alternative choice — show contextual answer, then re-show remaining choices
+      const remaining = pendingChoices.filter(c => c.value !== choice.value)
       setTyping(true)
       const t = setTimeout(() => {
         setTyping(false)
-        const reply = {
+        setChatMessages(prev => [...prev, {
           id: Date.now() + 1,
           from: 'rafiki',
           time: 'Just now',
           text: choice.response,
           agent: choice.responseAgent || 'Rafiki Orchestrator',
+        }])
+        if (remaining.length > 0) {
+          // Re-show remaining choices so user can keep exploring
+          setPendingChoices(remaining)
+          setAwaitingInput(true)
         }
-        setChatMessages(prev => [...prev, reply])
-        // Don't continue scripted flow — member went off-script, standard chips will appear
+        // idx NOT incremented — we're still at this decision point
       }, 1200)
       timersRef.current.push(t)
     } else {
-      // Primary choice — continue scripted flow
+      // Primary choice — advance idx and continue scripted flow
+      revealIdxRef.current++
       if (revealRef.current) {
         const t = setTimeout(revealRef.current, 500)
         timersRef.current.push(t)
