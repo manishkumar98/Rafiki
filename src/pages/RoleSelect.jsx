@@ -1,6 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { MEMBERS } from '../data'
+import rafikiAvatar from '../assets/rafiki.jpg'
 
 export default function RoleSelect() {
   const navigate = useNavigate()
@@ -10,7 +11,7 @@ export default function RoleSelect() {
       {/* Logo */}
       <div className="text-center mb-10 slide-up">
         <div className="inline-flex items-center gap-3 mb-4">
-          <div className="w-12 h-12 bg-saffron-500 rounded-2xl flex items-center justify-center text-white font-bold text-xl">R</div>
+          <img src={rafikiAvatar} alt="Rafiki" className="w-12 h-12 rounded-2xl object-cover object-top shadow-lg" />
           <div>
             <div className="text-white font-bold text-2xl tracking-tight">Rafiki</div>
             <div className="text-nia-blue2 text-sm">Migration Success Agent · nia.one</div>
