@@ -339,7 +339,7 @@ export default function OpsDashboard() {
             {/* Cooldown info */}
             <div className="bg-nia-surf border border-nia-blue/20 rounded-2xl p-4 text-xs text-nia-blue">
               <div className="font-semibold mb-1">Orchestrator Cooldown</div>
-              <div className="text-nia-navy/60">No duplicate alerts sent to the same member within 4 hours (configurable per Niadel). Emergency and health alerts bypass the cooldown queue.</div>
+              <div className="text-nia-navy/60">No duplicate alerts sent to the same member within 4 hours (configurable per Studio). Emergency and health alerts bypass the cooldown queue.</div>
             </div>
           </>
         )}

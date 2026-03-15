@@ -107,7 +107,7 @@ export default function EAEDashboard() {
             <div className="bg-nia-surf rounded-2xl p-3">
               <div className="text-xs text-nia-blue font-semibold mb-1">MEMBER</div>
               <div className="font-bold text-nia-navy">{selected.memberName}</div>
-              <div className="text-gray-500 text-sm">Nest {selected.nestId} · {selected.niadel}</div>
+              <div className="text-gray-500 text-sm">Room {selected.nestId} · {selected.niadel}</div>
             </div>
 
             {/* Flag */}

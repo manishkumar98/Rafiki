@@ -74,7 +74,7 @@ export default function RoleSelect() {
                 <div className="w-10 h-10 bg-nia-blue/20 rounded-xl flex items-center justify-center text-lg">📊</div>
                 <div className="flex-1">
                   <div className="text-white font-semibold text-sm">Ops Dashboard</div>
-                  <div className="text-nia-blue2 text-xs">12 agents · KPIs · Signal map · All Niadels</div>
+                  <div className="text-nia-blue2 text-xs">12 agents · KPIs · Signal map · All Studios</div>
                 </div>
                 <div className="text-nia-blue2/60 group-hover:text-nia-blue2 transition-colors">→</div>
               </div>

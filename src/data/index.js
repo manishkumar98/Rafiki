@@ -177,7 +177,7 @@ export const EAE_ALERTS = [
     nestId: 'D-205',
     niadel: 'Deccan South',
     flag: 'Placement blocked. Missing: bank account, PF registration.',
-    script: 'Help Irfan open a bank account at the nearest SBI branch (50m from Niadel). Bring the pre-filled PF form from the Flow desk. Documents needed: Aadhaar (confirmed present). Placement role: Aurobindo Pharma Packaging — Packing Helper, ₹14,500/month.',
+    script: 'Help Irfan open a bank account at the nearest SBI branch (50m from Studio). Bring the pre-filled PF form from the Flow desk. Documents needed: Aadhaar (confirmed present). Placement role: Aurobindo Pharma Packaging — Packing Helper, ₹14,500/month.',
     sla: '48 hours',
     created: '2 hours ago',
     status: 'pending',
@@ -210,7 +210,7 @@ export const CHAT_FLOWS = {
     },
     {
       id: 2, from: 'rafiki', time: '09:04 AM',
-      text: '📍 आपके Niadel का नक्शा:\n• Studio Essentials — Ground Floor\n• Canteen — Building B\n• Wi-Fi: Nia_RN_2024\n• Emergency: Santosh +91 99001 12233',
+      text: '📍 आपके Studio का नक्शा:\n• Studio Essentials — Ground Floor\n• Canteen — Building B\n• Wi-Fi: Nia_RN_2024\n• Emergency: Santosh +91 99001 12233',
       agent: 'Nest Activation Agent',
     },
     { id: 3, from: 'member', time: '09:12 AM', text: 'Dhanyavaad bhai! Nest mein aa gaya hoon.',
@@ -380,7 +380,7 @@ export const CHAT_FLOWS = {
       choices: [
         { label: 'YES — Senior role చూపించు! 💪', value: 'YES please!', primary: true },
         { label: 'MORE — ఇతర options కూడా చూపించు', value: 'MORE',
-          response: 'Lakshmi, ఇంకో 2 senior roles ఉన్నాయి: 💼\n\n2. Quality Lead — Bajaj Auto, Chakan\n   • ₹21,000/నెల | 2.3km | Night shift\n\n3. QC Supervisor — Bosch India, Chakan\n   • ₹23,500/నెల | 4km | Day shift\n\nAurobindo (₹22,000) మీ Niadel కి అత్యంత దగ్గరలో — free shuttle కూడా ఉంది. Deepa రేపు call చేసి వివరిస్తారు. 📞',
+          response: 'Lakshmi, ఇంకో 2 senior roles ఉన్నాయి: 💼\n\n2. Quality Lead — Bajaj Auto, Chakan\n   • ₹21,000/నెల | 2.3km | Night shift\n\n3. QC Supervisor — Bosch India, Chakan\n   • ₹23,500/నెల | 4km | Day shift\n\nAurobindo (₹22,000) మీ Studio కి అత్యంత దగ్గరలో — free shuttle కూడా ఉంది. Deepa రేపు call చేసి వివరిస్తారు. 📞',
           responseAgent: 'Job Match Agent' },
         { label: 'నాకు ఆలోచించే సమయం కావాలి', value: 'I need some time to think about this.',
           response: 'No rush at all, Lakshmi. ☺️\n\nOffer March 20 వరకు valid ఉంటుంది.\nDeepa role hold చేస్తారు.\n\nReady అయినప్పుడు YES reply చేయండి, లేదా:\n📞 Deepa Nair: +91 88002 23344\n\nమీరు దీన్ని deserve చేశారు. మీ సమయం తీసుకోండి. 🌟',
@@ -389,8 +389,8 @@ export const CHAT_FLOWS = {
     },
     {
       id: 4, from: 'rafiki', time: '3 days ago, 02:16 PM',
-      text: '✨ Senior Quality Supervisor — Mahindra Auto Components, Chakan\n• Salary: ₹22,000/month\n• Location: 1.2km from your current Niadel (free shuttle)\n• Shift: Day (6am–2pm)\n• Role: Inspect brake assembly line, lead 8-person QC team\n\nYour Flow Lead Deepa will call you today to walk you through next steps.',
-      translatedText: '✨ Senior Quality Supervisor — Mahindra Auto Components, Chakan\n• జీతం: ₹22,000/నెల\n• స్థానం: మీ current Niadel నుండి 1.2km దూరం (free shuttle)\n• Shift: Day shift (ఉదయం 6 – మధ్యాహ్నం 2)\n• పని: brake assembly line inspect చేయడం, 8 మంది QC team lead చేయడం\n\nమీ Flow Lead Deepa ఈ రోజు call చేసి తదుపరి అడుగులు వివరిస్తారు.',
+      text: '✨ Senior Quality Supervisor — Mahindra Auto Components, Chakan\n• Salary: ₹22,000/month\n• Location: 1.2km from your current Studio (free shuttle)\n• Shift: Day (6am–2pm)\n• Role: Inspect brake assembly line, lead 8-person QC team\n\nYour Flow Lead Deepa will call you today to walk you through next steps.',
+      translatedText: '✨ Senior Quality Supervisor — Mahindra Auto Components, Chakan\n• జీతం: ₹22,000/నెల\n• స్థానం: మీ current Studio నుండి 1.2km దూరం (free shuttle)\n• Shift: Day shift (ఉదయం 6 – మధ్యాహ్నం 2)\n• పని: brake assembly line inspect చేయడం, 8 మంది QC team lead చేయడం\n\nమీ Flow Lead Deepa ఈ రోజు call చేసి తదుపరి అడుగులు వివరిస్తారు.',
       agent: 'Job Match Agent',
     },
     {
@@ -409,8 +409,8 @@ export const CHAT_FLOWS = {
     },
     {
       id: 2, from: 'rafiki', time: 'Today, 09:01 AM',
-      text: 'Irfan, we have found 2 Packing & Loading roles near your Niadel:\n\n1. ✅ Aurobindo Pharma Packaging — ₹14,500/month, 200m away, Day shift\n2. ✅ Patil Logistics Warehouse — ₹13,000/month, 1.2km, Flexible shifts\n\nReply YES for Aurobindo or MORE to see both.',
-      translatedText: 'Irfan, আমরা তোমার Niadel-এর কাছে ২টি Packing ও Loading পদ খুঁজে পেয়েছি:\n\n১. ✅ Aurobindo Pharma Packaging — ₹14,500/মাস, ২০০ মিটার দূরে, Day shift\n২. ✅ Patil Logistics Warehouse — ₹13,000/মাস, ১.২ কিমি, নমনীয় shift\n\nAurobindo-এর জন্য YES অথবা দুটো দেখতে MORE পাঠাও।',
+      text: 'Irfan, we have found 2 Packing & Loading roles near your Studio:\n\n1. ✅ Aurobindo Pharma Packaging — ₹14,500/month, 200m away, Day shift\n2. ✅ Patil Logistics Warehouse — ₹13,000/month, 1.2km, Flexible shifts\n\nReply YES for Aurobindo or MORE to see both.',
+      translatedText: 'Irfan, আমরা তোমার Studio-এর কাছে ২টি Packing ও Loading পদ খুঁজে পেয়েছি:\n\n১. ✅ Aurobindo Pharma Packaging — ₹14,500/মাস, ২০০ মিটার দূরে, Day shift\n২. ✅ Patil Logistics Warehouse — ₹13,000/মাস, ১.২ কিমি, নমনীয় shift\n\nAurobindo-এর জন্য YES অথবা দুটো দেখতে MORE পাঠাও।',
       agent: 'Job Match Agent',
     },
     { id: 3, from: 'member', time: 'Today, 09:20 AM', text: 'YES ABB',
