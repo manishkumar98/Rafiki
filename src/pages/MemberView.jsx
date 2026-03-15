@@ -199,9 +199,11 @@ export default function MemberView() {
         <button onClick={() => navigate('/')} className="text-white/70 hover:text-white mr-1 transition-colors">
           ←
         </button>
-        <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-lg">
-          🤖
-        </div>
+        <img
+          src={rafikiAvatar}
+          alt="Rafiki"
+          className="w-10 h-10 rounded-full object-cover object-top border-2 border-white/30 flex-shrink-0"
+        />
         <div className="flex-1">
           <div className="text-white font-semibold text-sm">Rafiki</div>
           <div className="text-white/60 text-xs">Migration Success Agent · nia.one</div>
