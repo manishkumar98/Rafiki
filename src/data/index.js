@@ -403,8 +403,8 @@ export const CHAT_FLOWS = {
   m5: [ // Irfan - placement pending
     {
       id: 1, from: 'rafiki', time: 'Today, 09:00 AM',
-      text: 'Assalamu Alaikum Irfan! Nia তে স্বাগতম! 🙏\n\n(Welcome to Nia!)\n\nYour Room D-205 at Deccan South is ready. EAE Vikram will visit you today.',
-      translatedText: 'আসসালামু আলাইকুম Irfan! Nia-তে স্বাগতম! 🙏\n\nDeccan South-এ তোমার Room D-205 প্রস্তুত। EAE Vikram আজকে তোমার সাথে দেখা করবে।',
+      text: 'Assalamu Alaikum Irfan! Nia তে স্বাগতম! 🙏\n\n(Welcome to Nia!)\n\nYour Room D-205 at CRM-SRI-D01-S02-Sharmila ( Gents ) Sriperumbudur is ready. EAE Vikram will visit you today.',
+      translatedText: 'আসসালামু আলাইকুম Irfan! Nia-তে স্বাগতম! 🙏\n\nCRM-SRI-D01-S02-Sharmila ( Gents ) Sriperumbudur-এ তোমার Room D-205 প্রস্তুত। EAE Vikram আজকে তোমার সাথে দেখা করবে।',
       agent: 'Nest Activation Agent',
     },
     {
