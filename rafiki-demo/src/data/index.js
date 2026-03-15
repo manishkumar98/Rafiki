@@ -209,8 +209,12 @@ export const CHAT_FLOWS = {
     { id: 3, from: 'member', time: '09:12 AM', text: 'Dhanyavaad bhai! Nest mein aa gaya hoon.',
       choices: [
         { label: 'धन्यवाद भाई! Nest में आ गया हूं 😊', value: 'Dhanyavaad bhai! Nest mein aa gaya hoon.', primary: true },
-        { label: 'मेरा कमरा नंबर क्या है?', value: 'Mera room number kya hai?' },
-        { label: 'WiFi password बताओ', value: 'WiFi password batao' },
+        { label: 'मेरा कमरा नंबर क्या है?', value: 'Mera room number kya hai?',
+          response: 'Arjun, aapka room A-204 hai — Building A, 2nd floor. Lift ke paas seedha left.\n\nAapke saath usi floor par 3 aur Bihar ke saathi hain. Unse milna mat bhoolna! 😊\n\nKoi dikkat ho toh Santosh: +91 99001 12233',
+          responseAgent: 'Nest Activation Agent' },
+        { label: 'WiFi password बताओ', value: 'WiFi password batao',
+          response: 'WiFi naam: Nia_RN_2024\nPassword: NiaRajputana@24\n\nSabhi floors par kaam karta hai. Agar connect na ho — Santosh ko bolo: +91 99001 12233 📶',
+          responseAgent: 'Nest Activation Agent' },
       ],
     },
     {
@@ -226,8 +230,12 @@ export const CHAT_FLOWS = {
     { id: 6, from: 'member', time: '02:45 PM', text: 'Soap lena hai. Kaise loon?',
       choices: [
         { label: 'Soap लेना है। कैसे लूं? 🧼', value: 'Soap lena hai. Kaise loon?', primary: true },
-        { label: 'Counter पर और क्या मिलता है?', value: 'Counter par aur kya milta hai?' },
-        { label: 'HELP — किसी से बात करना है', value: 'HELP' },
+        { label: 'Counter पर और क्या मिलता है?', value: 'Counter par aur kya milta hai?',
+          response: 'Nia Essentials counter par yeh sab milta hai: 🛒\n\n• Soap, toothpaste, shampoo\n• Maggi, chai, biscuits, oats\n• Paracetamol, ORS, bandages\n• Phone charger cables\n\nSab market se 20–40% sasta. Member ID A-204 dikhao — bill seedha account se katega.',
+          responseAgent: 'Essentials Agent' },
+        { label: 'HELP — किसी से बात करना है', value: 'HELP',
+          response: 'Koi baat nahi Arjun. 🙏\n\nSantosh Meena — aapka EAE:\n📞 +91 99001 12233\n\nWoh aaj shaam aapse milne bhi aayenge. Ya seedha HELP bhejo — hum hamesha yahan hain.',
+          responseAgent: 'Rafiki Orchestrator' },
       ],
     },
     {
@@ -280,8 +288,12 @@ export const CHAT_FLOWS = {
     { id: 8, from: 'member', time: 'Today, 09:22 AM', text: 'Thank you. I will come to Wednesday group.',
       choices: [
         { label: 'Thank you 🙏 ମୁଁ Wednesday ଆସିବି', value: 'Thank you. I will come to Wednesday group.', primary: true },
-        { label: 'ମୁଁ ଟିକ ଭଲ ଅଛି (I am feeling better)', value: 'I am feeling a bit better now.' },
-        { label: 'HELP — EAE ସାଥେ କଥା ହେବା', value: 'HELP' },
+        { label: 'ମୁଁ ଟିକ ଭଲ ଅଛି (I am feeling better)', value: 'I am feeling a bit better now.',
+          response: 'That is so good to hear, Priya. 💛\n\nIf anything feels heavy again — health, home, or just missing family — message here anytime.\n\nThe Odia community (12 members) meets every Wednesday 7pm. Santosh will introduce you. You are not alone here. 🙏',
+          responseAgent: 'Loneliness Agent' },
+        { label: 'HELP — EAE ସାଥେ କଥା ହେବା', value: 'HELP',
+          response: 'Connecting you to Santosh now. 🤝\n\nSantosh Meena — EAE Rajputana North\n📞 +91 99001 12233\n\nHe will visit Nest B-112 within 2 hours.\nYou are not alone, Priya. We are here. 🙏',
+          responseAgent: 'Rafiki Orchestrator' },
       ],
     },
     {
@@ -307,8 +319,12 @@ export const CHAT_FLOWS = {
     { id: 3, from: 'member', time: '2 days ago, 06:15 PM', text: 'EAE',
       choices: [
         { label: 'EAE — Deepa से बात करवाओ 📞', value: 'EAE', primary: true },
-        { label: 'YES — HR को खुद call करता हूं', value: 'YES' },
-        { label: 'HELP — Emergency bridge चाहिए', value: 'HELP' },
+        { label: 'YES — HR को खुद call करता हूं', value: 'YES',
+          response: 'Bilkul Rajan bhai. 💪\n\nL&T HR direct number:\n📞 +91 22-6745-2000\nEmployee ID: RJ-7823\n\nPayroll dept mein Priti Shah se baat karo — woh is matter ki specialist hain.\n\nAgar 30 min mein resolve na ho, EAE bhejo — Deepa turant action legi.',
+          responseAgent: 'Income Guard Agent' },
+        { label: 'HELP — Emergency bridge चाहिए', value: 'HELP',
+          response: 'Rajan, Nia bridge support activate kar diya hai. ✅\n\n₹5,000 advance aaj raat tak aapke account mein aa jayega — salary aane par automatically settle hoga.\n\nDeepa L&T payroll ko bhi call kar rahi hain. Aapka beta school zaroor jayega. 🙏',
+          responseAgent: 'Income Guard Agent' },
       ],
     },
     {
@@ -326,8 +342,12 @@ export const CHAT_FLOWS = {
     { id: 6, from: 'member', time: 'Today, 08:14 AM', text: 'Okay. Thank you Rafiki. Bahut tension hai.',
       choices: [
         { label: 'ठीक है। बहुत tension है 😔', value: 'Okay. Thank you Rafiki. Bahut tension hai.', primary: true },
-        { label: 'Salary कब तक आएगी?', value: 'Salary kab tak aayegi?' },
-        { label: 'Essentials counter से कुछ ले सकता हूं?', value: 'Essentials counter se kuch le sakta hoon?' },
+        { label: 'Salary कब तक आएगी?', value: 'Salary kab tak aayegi?',
+          response: 'Deepa L&T payroll ke saath follow-up kar rahi hain. ⏱\n\nExpected resolution: Aaj shaam 6 baje tak\n\nAgar 6 baje tak nahi aati — hum automatically Level 3 escalation karenge aur Nia bridge advance trigger karenge.\n\nHum nazar rakh rahe hain, Rajan. 👁',
+          responseAgent: 'Income Guard Agent' },
+        { label: 'Essentials counter से कुछ ले सकता हूं?', value: 'Essentials counter se kuch le sakta hoon?',
+          response: 'Haan Rajan bhai — bilkul! 🛒\n\nStudio Essentials counter par 30-din credit milta hai. Koi kaagaz nahi chahiye.\n\nBas Member ID C-307 dikhao.\nKhaana, soap, daily use sab available hai.\n\nSalary aane par automatically settle ho jayega. Abhi tension mat lo.',
+          responseAgent: 'Essentials Agent' },
       ],
     },
     {
@@ -352,8 +372,12 @@ export const CHAT_FLOWS = {
     { id: 3, from: 'member', time: '3 days ago, 02:15 PM', text: 'YES please!',
       choices: [
         { label: 'YES — Senior role చూపించు! 💪', value: 'YES please!', primary: true },
-        { label: 'MORE — ఇతర options కూడా చూపించు', value: 'MORE' },
-        { label: 'నాకు ఆలోచించే సమయం కావాలి', value: 'I need some time to think about this.' },
+        { label: 'MORE — ఇతర options కూడా చూపించు', value: 'MORE',
+          response: 'Lakshmi, ఇంకో 2 senior roles ఉన్నాయి: 💼\n\n2. Quality Lead — Bajaj Auto, Chakan\n   • ₹21,000/నెల | 2.3km | Night shift\n\n3. QC Supervisor — Bosch India, Chakan\n   • ₹23,500/నెల | 4km | Day shift\n\nAurobindo (₹22,000) మీ Niadel కి అత్యంత దగ్గరలో — free shuttle కూడా ఉంది. Deepa రేపు call చేసి వివరిస్తారు. 📞',
+          responseAgent: 'Job Match Agent' },
+        { label: 'నాకు ఆలోచించే సమయం కావాలి', value: 'I need some time to think about this.',
+          response: 'No rush at all, Lakshmi. ☺️\n\nOffer March 20 వరకు valid ఉంటుంది.\nDeepa role hold చేస్తారు.\n\nReady అయినప్పుడు YES reply చేయండి, లేదా:\n📞 Deepa Nair: +91 88002 23344\n\nమీరు దీన్ని deserve చేశారు. మీ సమయం తీసుకోండి. 🌟',
+          responseAgent: 'Job Match Agent' },
       ],
     },
     {
@@ -385,8 +409,12 @@ export const CHAT_FLOWS = {
     { id: 3, from: 'member', time: 'Today, 09:20 AM', text: 'YES ABB',
       choices: [
         { label: 'YES — Aurobindo Pharma চাই ✅', value: 'YES ABB', primary: true },
-        { label: 'MORE — দুটো option দেখাও', value: 'MORE' },
-        { label: 'আরো কোনো option আছে?', value: 'Koi aur role hai?' },
+        { label: 'MORE — দুটো option দেখাও', value: 'MORE',
+          response: 'Irfan, এই দুটো role আছে: 📋\n\n1. ✅ Aurobindo Pharma Packaging\n   ₹14,500/মাস | ২০০ মিটার | Day shift\n\n2. ✅ Patil Logistics Warehouse\n   ₹13,000/মাস | ১.২ কিমি | নমনীয় shift\n\nAurobindo-এ ₹1,500 বেশি এবং কাছে। Vikram documentation শেষ হলেই confirm হবে। 💪',
+          responseAgent: 'Job Match Agent' },
+        { label: 'আরো কোনো option আছে?', value: 'Koi aur role hai?',
+          response: 'Irfan, তোমার profile-এ এখন ৩টি match হয়েছে:\n\n1. Aurobindo Pharma — ₹14,500 ✅ (সেরা)\n2. Patil Logistics — ₹13,000 ✅\n3. Hyderabad Tiles, Balanagar — ₹12,000 (3km)\n\nAurobindo সবচেয়ে কাছে এবং বেতন বেশি। আম্মার চিকিৎসার লক্ষ্য ৪ মাসে পূরণ হবে। 🎯',
+          responseAgent: 'Job Match Agent' },
       ],
     },
     {
@@ -398,8 +426,12 @@ export const CHAT_FLOWS = {
     { id: 5, from: 'member', time: 'Today, 09:35 AM', text: 'Okay Vikram bhai ka wait karta hoon.',
       choices: [
         { label: 'Okay, Vikram ভাইয়ের অপেক্ষা করছি 🙏', value: 'Okay Vikram bhai ka wait karta hoon.', primary: true },
-        { label: 'কতক্ষণ লাগবে?', value: 'Kitni der mein aayenge?' },
-        { label: 'HELP — আমার সাহায্য দরকার', value: 'HELP' },
+        { label: 'কতক্ষণ লাগবে?', value: 'Kitni der mein aayenge?',
+          response: 'Vikram এখন Nest D-205 এর দিকে আসছে — ১৫ মিনিটের মধ্যে পৌঁছাবে। 🚶\n\nSBI branch: ৩০–৪৫ মিনিট (bank account)\nPF form: আরো ১৫ মিনিট\n\nমোট: প্রায় ২ ঘণ্টা। আজ রাতের মধ্যেই Aurobindo placement confirm হবে। 💪',
+          responseAgent: 'Document Readiness Agent' },
+        { label: 'HELP — আমার সাহায্য দরকার', value: 'HELP',
+          response: 'Irfan, কোনো চিন্তা নেই! 🙏\n\nVikram Yadav — EAE Deccan South:\n📞 +91 77003 34455\n\nতিনি Nest D-205 আসছেন। জরুরি হলে সরাসরি call করো।\n\nতোমার placement সম্পূর্ণ নিরাপদ। 🤝',
+          responseAgent: 'Rafiki Orchestrator' },
       ],
     },
     {

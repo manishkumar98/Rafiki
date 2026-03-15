@@ -113,19 +113,38 @@ export default function MemberView() {
   const savingsPct = Math.round((member.savingsGoal.saved / member.savingsGoal.amount) * 100)
 
   // User picks a choice button
-  const handleChoiceSelect = (value) => {
+  const handleChoiceSelect = (choice) => {
     const idx = revealIdxRef.current
     const msgs = CHAT_FLOWS[id] || []
     const msg = msgs[idx]
-    const sentMsg = { id: msg?.id || Date.now(), from: 'member', time: 'Just now', text: value }
+    const sentMsg = { id: msg?.id || Date.now(), from: 'member', time: 'Just now', text: choice.value }
     setChatMessages(prev => [...prev, sentMsg])
     revealIdxRef.current++
     setAwaitingInput(false)
     setPendingChoices([])
 
-    if (revealRef.current) {
-      const t = setTimeout(revealRef.current, 500)
+    if (choice.response) {
+      // Alternative choice — show contextual Rafiki answer, then stop scripted flow
+      setTyping(true)
+      const t = setTimeout(() => {
+        setTyping(false)
+        const reply = {
+          id: Date.now() + 1,
+          from: 'rafiki',
+          time: 'Just now',
+          text: choice.response,
+          agent: choice.responseAgent || 'Rafiki Orchestrator',
+        }
+        setChatMessages(prev => [...prev, reply])
+        // Don't continue scripted flow — member went off-script, standard chips will appear
+      }, 1200)
       timersRef.current.push(t)
+    } else {
+      // Primary choice — continue scripted flow
+      if (revealRef.current) {
+        const t = setTimeout(revealRef.current, 500)
+        timersRef.current.push(t)
+      }
     }
   }
 
@@ -137,6 +156,7 @@ export default function MemberView() {
     setInputValue('')
 
     if (awaitingInput) {
+      // Free-text during a choice point — treat as primary (continue flow)
       revealIdxRef.current++
       setAwaitingInput(false)
       setPendingChoices([])
@@ -317,7 +337,7 @@ export default function MemberView() {
             {pendingChoices.map((choice, idx) => (
               <button
                 key={idx}
-                onClick={() => handleChoiceSelect(choice.value)}
+                onClick={() => handleChoiceSelect(choice)}
                 className={`text-left text-sm px-4 py-2.5 rounded-xl border-2 transition-all font-medium leading-snug ${
                   choice.primary
                     ? 'bg-nia-blue text-white border-nia-blue shadow-sm active:opacity-90'
