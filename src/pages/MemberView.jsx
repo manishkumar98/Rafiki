@@ -14,6 +14,7 @@ const PILLAR_COLORS = {
   'Loneliness Agent': 'text-saffron-500 bg-saffron-bg',
   'Milestone Agent': 'text-saffron-500 bg-saffron-bg',
   'Savings Agent': 'text-saffron-500 bg-saffron-bg',
+  'Rafiki Orchestrator': 'text-nia-blue bg-nia-surf',
 }
 
 export default function MemberView() {
@@ -21,13 +22,20 @@ export default function MemberView() {
   const navigate = useNavigate()
   const member = MEMBERS.find(m => m.id === id)
   const messages = CHAT_FLOWS[id] || []
-  const [visibleCount, setVisibleCount] = useState(0)
-  const [inputValue, setInputValue] = useState('')
+
   const [chatMessages, setChatMessages] = useState([])
   const [typing, setTyping] = useState(false)
   const [showProfile, setShowProfile] = useState(false)
   const [translatedMsgs, setTranslatedMsgs] = useState(new Set())
+  const [awaitingInput, setAwaitingInput] = useState(false)
+  const [pendingChoices, setPendingChoices] = useState([])
+  const [inputValue, setInputValue] = useState('')
+
   const bottomRef = useRef(null)
+  const revealIdxRef = useRef(0)
+  const cancelledRef = useRef(false)
+  const timersRef = useRef([])
+  const revealRef = useRef(null)
 
   const toggleTranslate = (msgId) => {
     setTranslatedMsgs(prev => {
@@ -38,57 +46,133 @@ export default function MemberView() {
   }
 
   useEffect(() => {
+    // Cancel any running timers
+    cancelledRef.current = true
+    timersRef.current.forEach(clearTimeout)
+    timersRef.current = []
+
+    // Reset state
     setChatMessages([])
-    setVisibleCount(0)
+    setTyping(false)
     setTranslatedMsgs(new Set())
-    let cancelled = false
-    let i = 0
-    const timers = []
+    setAwaitingInput(false)
+    setPendingChoices([])
+    setInputValue('')
+    revealIdxRef.current = 0
+    cancelledRef.current = false
+
+    const currentMessages = CHAT_FLOWS[id] || []
+
     const reveal = () => {
-      if (cancelled || i >= messages.length) return
-      const msg = messages[i]
-      if (msg.from === 'rafiki') {
-        setTyping(true)
-        const t = setTimeout(() => {
-          if (cancelled) return
-          setTyping(false)
-          setChatMessages(prev => [...prev, msg])
-          i++
-          const t2 = setTimeout(reveal, 600)
-          timers.push(t2)
-        }, 900)
-        timers.push(t)
-      } else {
-        setChatMessages(prev => [...prev, msg])
-        i++
-        const t = setTimeout(reveal, 400)
-        timers.push(t)
+      if (cancelledRef.current) return
+      const idx = revealIdxRef.current
+      if (idx >= currentMessages.length) return
+      const msg = currentMessages[idx]
+
+      if (msg.from === 'member') {
+        // Pause and present choices
+        const choices = msg.choices || [
+          { label: msg.text, value: msg.text, primary: true },
+          { label: 'HELP', value: 'HELP' },
+        ]
+        setPendingChoices(choices)
+        setAwaitingInput(true)
+        return
       }
+
+      setTyping(true)
+      const t = setTimeout(() => {
+        if (cancelledRef.current) return
+        setTyping(false)
+        setChatMessages(prev => [...prev, msg])
+        revealIdxRef.current++
+        const t2 = setTimeout(reveal, 600)
+        timersRef.current.push(t2)
+      }, 900)
+      timersRef.current.push(t)
     }
+
+    revealRef.current = reveal
+
     const initial = setTimeout(reveal, 400)
-    timers.push(initial)
+    timersRef.current.push(initial)
+
     return () => {
-      cancelled = true
-      timers.forEach(clearTimeout)
+      cancelledRef.current = true
+      timersRef.current.forEach(clearTimeout)
     }
   }, [id])
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' })
-  }, [chatMessages, typing])
+  }, [chatMessages, typing, awaitingInput])
 
   if (!member) return <div className="p-8 text-center">Member not found</div>
 
   const docCount = Object.values(member.documents).filter(Boolean).length
   const savingsPct = Math.round((member.savingsGoal.saved / member.savingsGoal.amount) * 100)
 
+  // User picks a choice button
+  const handleChoiceSelect = (choice) => {
+    const idx = revealIdxRef.current
+    const msgs = CHAT_FLOWS[id] || []
+    const msg = msgs[idx]
+    const sentMsg = { id: Date.now(), from: 'member', time: 'Just now', text: choice.value }
+    setChatMessages(prev => [...prev, sentMsg])
+    setAwaitingInput(false)
+    setPendingChoices([])
+
+    if (choice.response) {
+      // Alternative choice — show contextual answer, then re-show remaining choices
+      const remaining = pendingChoices.filter(c => c.value !== choice.value)
+      setTyping(true)
+      const t = setTimeout(() => {
+        setTyping(false)
+        setChatMessages(prev => [...prev, {
+          id: Date.now() + 1,
+          from: 'rafiki',
+          time: 'Just now',
+          text: choice.response,
+          agent: choice.responseAgent || 'Rafiki Orchestrator',
+        }])
+        if (remaining.length > 0) {
+          // Re-show remaining choices so user can keep exploring
+          setPendingChoices(remaining)
+          setAwaitingInput(true)
+        }
+        // idx NOT incremented — we're still at this decision point
+      }, 1200)
+      timersRef.current.push(t)
+    } else {
+      // Primary choice — advance idx and continue scripted flow
+      revealIdxRef.current++
+      if (revealRef.current) {
+        const t = setTimeout(revealRef.current, 500)
+        timersRef.current.push(t)
+      }
+    }
+  }
+
+  // Free-text send (works during and after flow)
   const handleSend = (text) => {
     if (!text.trim()) return
     const newMsg = { id: Date.now(), from: 'member', time: 'Just now', text }
     setChatMessages(prev => [...prev, newMsg])
     setInputValue('')
 
-    // Auto-reply for keyword commands
+    if (awaitingInput) {
+      // Free-text during a choice point — treat as primary (continue flow)
+      revealIdxRef.current++
+      setAwaitingInput(false)
+      setPendingChoices([])
+      if (revealRef.current) {
+        const t = setTimeout(revealRef.current, 500)
+        timersRef.current.push(t)
+      }
+      return
+    }
+
+    // Post-flow auto-reply
     const upper = text.trim().toUpperCase()
     setTyping(true)
     setTimeout(() => {
@@ -210,10 +294,10 @@ export default function MemberView() {
                   {msg.translatedText && (
                     <button
                       onClick={() => toggleTranslate(msg.id)}
-                      className="mt-1.5 flex items-center gap-1 text-[11px] font-medium transition-colors"
-                      style={{ color: translatedMsgs.has(msg.id) ? '#888' : '#2C5880' }}
+                      className="mt-2 flex items-center gap-1.5 text-[11px] font-medium transition-all hover:opacity-80 border-t border-gray-100 pt-1.5 w-full"
+                      style={{ color: translatedMsgs.has(msg.id) ? '#999' : '#2C5880' }}
                     >
-                      <span>🌐</span>
+                      <span className="text-[13px]">🌐</span>
                       <span>{translatedMsgs.has(msg.id) ? 'Show original' : `Translate to ${member.language}`}</span>
                     </button>
                   )}
@@ -247,19 +331,47 @@ export default function MemberView() {
         <div ref={bottomRef} />
       </div>
 
-      {/* Quick reply chips */}
-      <div className="bg-white border-t border-gray-200 px-4 pt-2 pb-1 flex gap-2 overflow-x-auto scrollbar-hide">
-        {['YES', 'MORE', 'HELP'].map(keyword => (
-          <button
-            key={keyword}
-            onClick={() => handleSend(keyword)}
-            className="flex-shrink-0 text-xs font-semibold px-3 py-1.5 rounded-full border transition-colors"
-            style={keyword === 'HELP' ? { borderColor: '#E06D1F', color: '#E06D1F', background: '#FEF5ED' } : { borderColor: '#2C5880', color: '#2C5880', background: '#EEF4F9' }}
-          >
-            {keyword}
-          </button>
-        ))}
-      </div>
+      {/* Choice buttons — shown while awaiting member input */}
+      {awaitingInput && pendingChoices.length > 0 && (
+        <div className="bg-white border-t border-gray-200 px-4 pt-3 pb-2 slide-up">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="text-[10px] text-gray-400 font-semibold uppercase tracking-wider">Your reply</span>
+            <div className="flex-1 h-px bg-gray-100"></div>
+          </div>
+          <div className="flex flex-col gap-2">
+            {pendingChoices.map((choice, idx) => (
+              <button
+                key={idx}
+                onClick={() => handleChoiceSelect(choice)}
+                className={`text-left text-sm px-4 py-2.5 rounded-xl border-2 transition-all font-medium leading-snug ${
+                  choice.primary
+                    ? 'bg-nia-blue text-white border-nia-blue shadow-sm active:opacity-90'
+                    : 'bg-white text-nia-blue border-nia-blue/25 hover:border-nia-blue hover:bg-nia-surf active:bg-nia-surf'
+                }`}
+              >
+                {choice.primary && <span className="mr-1.5 opacity-70">↵</span>}
+                {choice.label}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Standard quick-reply chips — shown when NOT awaiting input */}
+      {!awaitingInput && (
+        <div className="bg-white border-t border-gray-200 px-4 pt-2 pb-1 flex gap-2 overflow-x-auto scrollbar-hide">
+          {['YES', 'MORE', 'HELP'].map(keyword => (
+            <button
+              key={keyword}
+              onClick={() => handleSend(keyword)}
+              className="flex-shrink-0 text-xs font-semibold px-3 py-1.5 rounded-full border transition-colors"
+              style={keyword === 'HELP' ? { borderColor: '#E06D1F', color: '#E06D1F', background: '#FEF5ED' } : { borderColor: '#2C5880', color: '#2C5880', background: '#EEF4F9' }}
+            >
+              {keyword}
+            </button>
+          ))}
+        </div>
+      )}
 
       {/* Input bar */}
       <div className="bg-white px-3 py-3 flex items-center gap-2 border-t border-gray-100">
@@ -269,7 +381,7 @@ export default function MemberView() {
             value={inputValue}
             onChange={e => setInputValue(e.target.value)}
             onKeyDown={e => e.key === 'Enter' && handleSend(inputValue)}
-            placeholder="Type a message..."
+            placeholder={awaitingInput ? 'Or type your reply...' : 'Type a message...'}
             className="flex-1 bg-transparent text-sm outline-none text-gray-800 placeholder-gray-400"
           />
         </div>
